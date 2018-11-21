@@ -12,6 +12,7 @@ int main() {
 	bool exit = true;
 	do
 	{
+
 		string outputString;
 		Lexique lex;
 		cout << "Choisir une des options suivantes : \n" << 
