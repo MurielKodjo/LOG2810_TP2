@@ -18,6 +18,17 @@
       <Platform>x64</Platform>
     </ProjectConfiguration>
   </ItemGroup>
+  <ItemGroup>
+    <ClInclude Include="Automate.h" />
+    <ClInclude Include="lexique.h" />
+    <ClInclude Include="Mot.h" />
+  </ItemGroup>
+  <ItemGroup>
+    <ClCompile Include="Automate.cpp" />
+    <ClCompile Include="lexique.cpp" />
+    <ClCompile Include="main.cpp" />
+    <ClCompile Include="Mot.cpp" />
+  </ItemGroup>
   <PropertyGroup Label="Globals">
     <VCProjectVersion>15.0</VCProjectVersion>
     <ProjectGuid>{8B4E8573-B34F-4B7F-8FA9-0CECFBA00D13}</ProjectGuid>
@@ -114,17 +125,6 @@
       <OptimizeReferences>true</OptimizeReferences>
     </Link>
   </ItemDefinitionGroup>
-  <ItemGroup>
-    <ClCompile Include="..\..\..\tpa_log2810\TP2_vs1\TP2_vs1\Automate.cpp" />
-    <ClCompile Include="..\..\..\tpa_log2810\TP2_vs1\TP2_vs1\lexique.cpp" />
-    <ClCompile Include="..\..\..\tpa_log2810\TP2_vs1\TP2_vs1\main.cpp" />
-    <ClCompile Include="..\..\..\tpa_log2810\TP2_vs1\TP2_vs1\Mot.cpp" />
-  </ItemGroup>
-  <ItemGroup>
-    <ClInclude Include="..\..\..\tpa_log2810\TP2_vs1\TP2_vs1\Automate.h" />
-    <ClInclude Include="..\..\..\tpa_log2810\TP2_vs1\TP2_vs1\lexique.h" />
-    <ClInclude Include="..\..\..\tpa_log2810\TP2_vs1\TP2_vs1\Mot.h" />
-  </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">
   </ImportGroup>
