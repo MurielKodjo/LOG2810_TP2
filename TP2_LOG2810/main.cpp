@@ -12,7 +12,6 @@ int main() {
 	bool exit = true;
 	do
 	{
-
 		string outputString;
 		Lexique lex;
 		cout << "Choisir une des options suivantes : \n" << 
@@ -37,7 +36,6 @@ int main() {
 		}
 		else if (output == 'c' || output == 'C')
 		{
-			char cha = 'é';
 			cout << "Entrez le mot dont vous voulez connaitre le label \n" ;
 			string motLabel;
 			cin >> motLabel;
