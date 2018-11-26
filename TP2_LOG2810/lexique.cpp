@@ -63,3 +63,15 @@ int Lexique::getSecondLabel(string mot)
 	}
 	return 0; //retourne exception "Mot pas dans lexique"
 }
+
+vector<Mot> Lexique::getVecLexique()
+{
+	return vecLexique_;
+}
+
+//AJOUTÉ PAR HORBY POUR TEST----------------------------------------------------
+void Lexique::setVecLexique(vector<Mot> vectMot)
+{
+	vecLexique_ = vectMot;
+}
+//------------------------------------------------------------------------------

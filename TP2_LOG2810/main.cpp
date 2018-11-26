@@ -14,6 +14,7 @@ int main() {
 	{
 		string outputString;
 		Lexique lex;
+		Automate* automate;
 		cout << "Choisir une des options suivantes : \n" << 
 			"a) Mettre a jour \nb) Saisir du texte \nc) Afficher les labels \nd) Quitter \n";
 		cin >> outputString;
@@ -32,6 +33,33 @@ int main() {
 			cout << "Entrez un mot \n";
 			string mot;
 			cin >> mot;
+			
+			Lexique* lexPtr = new Lexique();
+			//*lexPtr = lex;
+
+			//AJOUTÉ PAR HORBY POUR TEST--------------------------------------------------------------------------------------------
+			vector<Mot> motsLus(12);
+			motsLus[0].setValeurMot("caisse");
+			motsLus[1].setValeurMot("caisses");
+			motsLus[2].setValeurMot("caissier");
+			motsLus[3].setValeurMot("caissiers");
+			motsLus[4].setValeurMot("caissière");
+			motsLus[5].setValeurMot("caissières");
+			motsLus[6].setValeurMot("cas");
+			motsLus[7].setValeurMot("case");
+			motsLus[8].setValeurMot("cases");
+			motsLus[9].setValeurMot("caser");
+			motsLus[10].setValeurMot("casier");
+			motsLus[11].setValeurMot("casiers");
+
+			lexPtr->setVecLexique(motsLus);
+			//-----------------------------------------------------------------------------------------------------------------------
+
+			automate = new Automate(lexPtr);
+			for (int i = 0; i < mot.size(); i++)
+			{
+				automate->transition(mot[i]);
+			}
 
 		}
 		else if (output == 'c' || output == 'C')

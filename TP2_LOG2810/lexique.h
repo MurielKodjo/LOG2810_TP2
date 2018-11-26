@@ -15,6 +15,12 @@ public:
 	void setVecLexique(vector<string> vectMot);
 	int getPremierLabel(string mot);
 	int getSecondLabel(string mot);
+
+	//AJOUTÉ PAR HORBY-------------------------------------
+	vector<Mot> getVecLexique();
+	void setVecLexique(vector<Mot> vectMot); // AJOUTÉ POUR TEST
+	//-----------------------------------------------------
+
 private:
 	vector<Mot> vecLexique_ ;
 	Mot vecMotRecent_[5];
