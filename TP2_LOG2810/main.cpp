@@ -34,28 +34,29 @@ int main() {
 			string mot;
 			cin >> mot;
 			
-			Lexique* lexPtr = new Lexique();
+			//Lexique* lexPtr = new Lexique();
 			//*lexPtr = lex;
 
 			//AJOUTÉ PAR HORBY POUR TEST--------------------------------------------------------------------------------------------
-			vector<Mot> motsLus(12);
-			motsLus[0].setValeurMot("caisse");
-			motsLus[1].setValeurMot("caisses");
-			motsLus[2].setValeurMot("caissier");
-			motsLus[3].setValeurMot("caissiers");
-			motsLus[4].setValeurMot("caissière");
-			motsLus[5].setValeurMot("caissières");
-			motsLus[6].setValeurMot("cas");
-			motsLus[7].setValeurMot("case");
-			motsLus[8].setValeurMot("cases");
-			motsLus[9].setValeurMot("caser");
-			motsLus[10].setValeurMot("casier");
-			motsLus[11].setValeurMot("casiers");
+			//vector<Mot> motsLus(12);
+			//motsLus[0].setValeurMot("caisse");
+			//motsLus[1].setValeurMot("caisses");
+			//motsLus[2].setValeurMot("caissier");
+			//motsLus[3].setValeurMot("caissiers");
+			//motsLus[4].setValeurMot("caissière");
+			//motsLus[5].setValeurMot("caissières");
+			//motsLus[6].setValeurMot("cas");
+			//motsLus[7].setValeurMot("case");
+			//motsLus[8].setValeurMot("cases");
+			//motsLus[9].setValeurMot("caser");
+			//motsLus[10].setValeurMot("casier");
+			//motsLus[11].setValeurMot("casiers");
 
-			lexPtr->setVecLexique(motsLus);
+			//lex.setVecLexique(motsLus);
 			//-----------------------------------------------------------------------------------------------------------------------
 
-			automate = new Automate(lexPtr);
+			//automate = new Automate(lexPtr);
+			automate = new Automate(&lex);
 			for (int i = 0; i < mot.size(); i++)
 			{
 				automate->transition(mot[i]);
