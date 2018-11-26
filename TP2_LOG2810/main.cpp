@@ -10,11 +10,11 @@ int main() {
 	//TODO : interface graphique permettant de saisir texte
 	//TODO : Afficher le label
 	bool exit = true;
+	Lexique lex;
+	Automate* automate;
 	do
 	{
 		string outputString;
-		Lexique lex;
-		Automate* automate;
 		cout << "Choisir une des options suivantes : \n" << 
 			"a) Mettre a jour \nb) Saisir du texte \nc) Afficher les labels \nd) Quitter \n";
 		cin >> outputString;
@@ -24,7 +24,7 @@ int main() {
 			cout << "Entrer le fichier de lexique a charger \n";
 			string nomfichier;
 			cin >> nomfichier;
-			
+			//Lexique lex;
 			lex.lectureFichier(nomfichier);
 
 		}
