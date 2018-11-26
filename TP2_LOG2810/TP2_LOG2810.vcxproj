@@ -24,6 +24,7 @@
     <ClInclude Include="Etat.h" />
     <ClInclude Include="lexique.h" />
     <ClInclude Include="Mot.h" />
+    <ClInclude Include="oneChar.h" />
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="Automate.cpp" />
@@ -32,6 +33,7 @@
     <ClCompile Include="lexique.cpp" />
     <ClCompile Include="main.cpp" />
     <ClCompile Include="Mot.cpp" />
+    <ClCompile Include="oneChar.cpp" />
   </ItemGroup>
   <PropertyGroup Label="Globals">
     <VCProjectVersion>15.0</VCProjectVersion>
