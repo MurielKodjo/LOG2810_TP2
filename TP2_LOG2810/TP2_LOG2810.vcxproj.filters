@@ -27,14 +27,10 @@
     <ClInclude Include="Etat.h">
       <Filter>Fichiers d%27en-tête</Filter>
     </ClInclude>
-<<<<<<< HEAD
-    <ClInclude Include="VariablesGlobales.h">
-=======
     <ClInclude Include="cinqPremier.h">
       <Filter>Fichiers d%27en-tête</Filter>
     </ClInclude>
     <ClInclude Include="oneChar.h">
->>>>>>> 32230886b894996ec4b453f7ab34ff850e043a5d
       <Filter>Fichiers d%27en-tête</Filter>
     </ClInclude>
   </ItemGroup>
