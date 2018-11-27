@@ -1,10 +1,11 @@
 #include "Automate.h"
+#include "VariablesGlobales.h"
 #include <iostream>
 
 Automate::Automate(Lexique* langageReconnu)
 {
 	motFinaux_ = langageReconnu;
-	prefixEntree_ = "";
+	prefixEntree_ = ""; //INUTILE?
 	start_ = new Etat("");
 	construireFSM();
 	etatPresent_ = start_;
@@ -86,7 +87,7 @@ void Automate::transition(char entree)
 		{
 			if (nouveauPrefix == etats_[i]->getPrefix())
 			{
-				prefixEntree_ = nouveauPrefix;
+				prefixEntree_ = nouveauPrefix; //INUTILE?
 				etatPresent_ = etats_[i];
 				proposer();
 				return;
@@ -97,7 +98,7 @@ void Automate::transition(char entree)
 		{
 			if (nouveauPrefix == etats_[i]->getPrefix())
 			{
-				prefixEntree_ = nouveauPrefix;
+				prefixEntree_ = nouveauPrefix; //INUTILE?
 				etatPresent_ = etats_[i];
 				proposer();
 				return;
@@ -108,9 +109,20 @@ void Automate::transition(char entree)
 	}
 	else
 	{
-		etatPresent_ = start_;
-		prefixEntree_ = "";
-		cout << "Cette entree ne fait pas partie de l'alphabet du lexique selectionne. Veuillez entrer une lettre valide" << endl << endl;
+		if (entree == SPACE || entree == ENTER)
+		{
+			actualiserLabels();
+			etatPresent_ = start_;
+			prefixEntree_ = ""; //INUTILE?
+			proposer();
+
+		}
+		else 
+		{
+			etatPresent_ = start_;
+			prefixEntree_ = "";
+			cout << "Cette entree ne fait pas partie de l'alphabet du lexique selectionne. Veuillez entrer une lettre valide" << endl << endl;
+		}
 	}
 }
 
@@ -128,5 +140,17 @@ void Automate::proposer()
 			cout << (i + 1) << ") " << etatPresent_->getMotsPossibles()[i].getValeurMot() << endl;
 		}
 		cout << endl;
+	}
+}
+
+void Automate::actualiserLabels()
+{
+	for (int i = 0; i < motFinaux_->getVecLexique().size(); i++)
+	{
+		if (etatPresent_->getPrefix() == motFinaux_->getVecLexique()[i].getValeurMot())
+		{
+			motFinaux_->incrementerNbUtilisation(&motFinaux_->getVecLexique()[i]);
+			motFinaux_->actualiserMotRecent(&motFinaux_->getVecLexique()[i]);
+		}
 	}
 }

@@ -18,9 +18,11 @@ public:
 	void transition(char entree);
 	void proposer();
 
+	void actualiserLabels();
+
 private:
 	Lexique* motFinaux_;
-	string prefixEntree_;
+	string prefixEntree_; //INUTILE?
 	Etat* start_;
 	Etat* etatPresent_;
 	//Etat* prochainEtats_;
