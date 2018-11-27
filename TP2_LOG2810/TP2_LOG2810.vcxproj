@@ -20,17 +20,24 @@
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Automate.h" />
+    <ClInclude Include="cinqPremier.h" />
     <ClInclude Include="Etat.h" />
     <ClInclude Include="lexique.h" />
     <ClInclude Include="Mot.h" />
+<<<<<<< HEAD
     <ClInclude Include="VariablesGlobales.h" />
+=======
+    <ClInclude Include="oneChar.h" />
+>>>>>>> 32230886b894996ec4b453f7ab34ff850e043a5d
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="Automate.cpp" />
+    <ClCompile Include="cinqPremier.cpp" />
     <ClCompile Include="Etat.cpp" />
     <ClCompile Include="lexique.cpp" />
     <ClCompile Include="main.cpp" />
     <ClCompile Include="Mot.cpp" />
+    <ClCompile Include="oneChar.cpp" />
   </ItemGroup>
   <PropertyGroup Label="Globals">
     <VCProjectVersion>15.0</VCProjectVersion>
