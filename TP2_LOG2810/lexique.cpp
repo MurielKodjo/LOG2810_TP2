@@ -85,7 +85,7 @@ void Lexique::incrementerNbUtilisation(Mot* mot)
 
 void Lexique::actualiserMotRecent(Mot* mot)
 {
-	for (int i = 0; i < vecMotRecent_->size(); i++)
+	/*for (int i = 0; i < vecMotRecent_->size(); i++)
 	{
 		if (mot == &vecLexique_[i])
 		{
@@ -95,5 +95,5 @@ void Lexique::actualiserMotRecent(Mot* mot)
 	vector<Mot*>::iterator it = vecMotRecent_->begin();
 	vecMotRecent_->insert(it, mot);
 	vector<Mot*>::iterator end = vecMotRecent_->end();
-	vecMotRecent_->erase(end);
+	vecMotRecent_->erase(end);*/
 }

@@ -78,7 +78,7 @@ bool Automate::presentDansAlphabet(char lettre)
 	return false;
 }
 
-void Automate::transition(char entree)
+string Automate::transition(char entree)
 {
 	if (presentDansAlphabet(entree))
 	{
@@ -89,8 +89,8 @@ void Automate::transition(char entree)
 			{
 				prefixEntree_ = nouveauPrefix; //INUTILE?
 				etatPresent_ = etats_[i];
-				proposer();
-				return;
+				string propositions = proposer();
+				return propositions;
 			}
 		}
 		nouveauPrefix = "" + entree;
@@ -100,8 +100,8 @@ void Automate::transition(char entree)
 			{
 				prefixEntree_ = nouveauPrefix; //INUTILE?
 				etatPresent_ = etats_[i];
-				proposer();
-				return;
+				string propositions = proposer();
+				return propositions;
 			}
 		}
 		etatPresent_ = start_;
@@ -109,12 +109,13 @@ void Automate::transition(char entree)
 	}
 	else
 	{
-		if (entree == SPACE || entree == ENTER)
+		if (entree == ESPACE || entree == RETOUR_DE_LIGNE)
 		{
 			actualiserLabels();
 			etatPresent_ = start_;
 			prefixEntree_ = ""; //INUTILE?
-			proposer();
+			string propositions = proposer();
+			return propositions;
 
 		}
 		else 
@@ -126,20 +127,34 @@ void Automate::transition(char entree)
 	}
 }
 
-void Automate::proposer()
+string Automate::proposer()
 {
+	string propositions = "";
 	if (etatPresent_->getMotsPossibles().empty())
 	{
-		cout << "Malheureusement, il n'existe aucun mot correspondant a votre entree dans le lexique selectionne" << endl;
+		string message = "Malheureusement, il n'existe aucun mot correspondant a votre entree dans le lexique selectionne\n";
+		cout << message;
+		propositions += message;
+		return propositions;
 	}
 	else
 	{
-		cout << "Vouliez-vous ecrire : " << endl;
+		string message = "Vouliez-vous ecrire :\n";
+		cout << message;
 		for (int i = 0; i < etatPresent_->getMotsPossibles().size(); i++)
 		{
-			cout << (i + 1) << ") " << etatPresent_->getMotsPossibles()[i].getValeurMot() << endl;
+			string uneProposition = "";
+			uneProposition += (i + 1);
+			uneProposition += ") ";
+			uneProposition += etatPresent_->getMotsPossibles()[i].getValeurMot();
+			uneProposition += "\n";
+			//cout << (i + 1) << ") " << etatPresent_->getMotsPossibles()[i].getValeurMot() << endl;
+			cout << uneProposition;
+			propositions += uneProposition;
 		}
+		propositions += "\n";
 		cout << endl;
+		return propositions;
 	}
 }
 

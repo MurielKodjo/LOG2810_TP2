@@ -3,6 +3,8 @@
 #include <stdio.h>
 #include "lexique.h"
 #include "Automate.h"
+#include "oneChar.h"
+#include "VariablesGlobales.h"
 #include <conio.h>
 using namespace std;
 
@@ -31,37 +33,37 @@ int main() {
 		else if (output == 'b' || output == 'B')
 		{
 			cout << "Entrez un mot \n";
-			string mot;
-			cin >> mot;
-			
-			//Lexique* lexPtr = new Lexique();
-			//*lexPtr = lex;
-
-			//AJOUTÉ PAR HORBY POUR TEST--------------------------------------------------------------------------------------------
-			//vector<Mot> motsLus(12);
-			//motsLus[0].setValeurMot("caisse");
-			//motsLus[1].setValeurMot("caisses");
-			//motsLus[2].setValeurMot("caissier");
-			//motsLus[3].setValeurMot("caissiers");
-			//motsLus[4].setValeurMot("caissière");
-			//motsLus[5].setValeurMot("caissières");
-			//motsLus[6].setValeurMot("cas");
-			//motsLus[7].setValeurMot("case");
-			//motsLus[8].setValeurMot("cases");
-			//motsLus[9].setValeurMot("caser");
-			//motsLus[10].setValeurMot("casier");
-			//motsLus[11].setValeurMot("casiers");
-
-			//lex.setVecLexique(motsLus);
-			//-----------------------------------------------------------------------------------------------------------------------
-
-			//automate = new Automate(lexPtr);
+			//string mot;
+			//cin >> mot;
 			automate = new Automate(&lex);
-			for (int i = 0; i < mot.size(); i++)
+			oneChar lecture;
+			bool wait = false;
+			bool toucheRetourLigneEntree = false;
+			char caractereLu;
+			string caractereTape = "";
+			string anciennesPropositions = "";
+			while (toucheRetourLigneEntree == false)
 			{
-				automate->transition(mot[i]);
-			}
+				if (wait == false)
+				{
+					cout << anciennesPropositions << "Champs de recherche : " << caractereTape;
+					caractereLu = lecture.readOneChar();
+					caractereTape += caractereLu;
+					anciennesPropositions = automate->transition(caractereLu);
+					if (caractereLu == RETOUR_DE_LIGNE)
+					{
+						toucheRetourLigneEntree = true;
+						system("cls");
+					}
+					wait = !wait;
 
+				}
+				else
+				{
+					lecture.readOneChar();
+					wait = !wait;
+				}
+			} 
 		}
 		else if (output == 'c' || output == 'C')
 		{

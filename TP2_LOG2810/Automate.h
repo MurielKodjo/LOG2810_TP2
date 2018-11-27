@@ -15,8 +15,8 @@ public:
 	void actualiserAlphabet(char lettre);
 	bool presentDansAlphabet(char lettre);
 
-	void transition(char entree);
-	void proposer();
+	string transition(char entree);
+	string proposer();
 
 	void actualiserLabels();
 
