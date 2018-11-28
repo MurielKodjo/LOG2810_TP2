@@ -2,6 +2,7 @@
 #include <string>
 #include <stdio.h>
 #include "lexique.h"
+#include "oneChar.h"
 #include "Automate.h"
 #include <conio.h>
 using namespace std;
@@ -24,7 +25,7 @@ int main() {
 			cout << "Entrer le fichier de lexique a charger \n";
 			string nomfichier;
 			cin >> nomfichier;
-			//Lexique lex;
+			lex.clear();
 			lex.lectureFichier(nomfichier);
 
 		}
@@ -32,34 +33,30 @@ int main() {
 		{
 			cout << "Entrez un mot \n";
 			string mot;
-			cin >> mot;
-			
-			//Lexique* lexPtr = new Lexique();
-			//*lexPtr = lex;
-
-			//AJOUTÉ PAR HORBY POUR TEST--------------------------------------------------------------------------------------------
-			//vector<Mot> motsLus(12);
-			//motsLus[0].setValeurMot("caisse");
-			//motsLus[1].setValeurMot("caisses");
-			//motsLus[2].setValeurMot("caissier");
-			//motsLus[3].setValeurMot("caissiers");
-			//motsLus[4].setValeurMot("caissière");
-			//motsLus[5].setValeurMot("caissières");
-			//motsLus[6].setValeurMot("cas");
-			//motsLus[7].setValeurMot("case");
-			//motsLus[8].setValeurMot("cases");
-			//motsLus[9].setValeurMot("caser");
-			//motsLus[10].setValeurMot("casier");
-			//motsLus[11].setValeurMot("casiers");
-
-			//lex.setVecLexique(motsLus);
-			//-----------------------------------------------------------------------------------------------------------------------
-
-			//automate = new Automate(lexPtr);
+			oneChar ch;
+			//mot += ch.readOneChar();
+			//cin >> mot;
+			////char input[50] = "";
+			//char cur_input;
+			//printf("Input: ");
+			///*for (int i = 0; i < 50; i++)
+			//{*/
+			//while(true){
+			//	cur_input = getchar();
+			//	if (cur_input != ' ')
+			//	{
+			//		mot += cur_input;
+			//		//break;
+			//	}
+			//	else
+			//		break;
+			//}
 			automate = new Automate(&lex);
-			for (int i = 0; i < mot.size(); i++)
+
+			for (int i = 0; i < 10; i++)
 			{
-				automate->transition(mot[i]);
+				automate->transition(ch.readOneChar());
+				cout << endl;
 			}
 
 		}

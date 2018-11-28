@@ -64,6 +64,11 @@ int Lexique::getSecondLabel(string mot)
 	return 0; //retourne exception "Mot pas dans lexique"
 }
 
+void Lexique::clear()
+{
+	vecLexique_.clear();
+}
+
 vector<Mot> Lexique::getVecLexique()
 {
 	return vecLexique_;

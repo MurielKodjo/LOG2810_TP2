@@ -10,5 +10,6 @@ public:
 	oneChar();
 	~oneChar();
 	char readOneChar();
+	string readOneString();
 };
 
