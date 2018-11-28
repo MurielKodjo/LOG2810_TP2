@@ -1,10 +1,11 @@
 #include "Automate.h"
+#include "VariablesGlobales.h"
 #include <iostream>
 
 Automate::Automate(Lexique* langageReconnu)
 {
 	motFinaux_ = langageReconnu;
-	prefixEntree_ = "";
+	prefixEntree_ = ""; //INUTILE?
 	start_ = new Etat("");
 	construireFSM();
 	etatPresent_ = start_;
@@ -77,7 +78,7 @@ bool Automate::presentDansAlphabet(char lettre)
 	return false;
 }
 
-void Automate::transition(char entree)
+string Automate::transition(char entree)
 {
 	if (presentDansAlphabet(entree))
 	{
@@ -86,10 +87,10 @@ void Automate::transition(char entree)
 		{
 			if (nouveauPrefix == etats_[i]->getPrefix())
 			{
-				prefixEntree_ = nouveauPrefix;
+				prefixEntree_ = nouveauPrefix; //INUTILE?
 				etatPresent_ = etats_[i];
-				proposer();
-				return;
+				string propositions = proposer();
+				return propositions;
 			}
 		}
 		nouveauPrefix = "" + entree;
@@ -97,10 +98,10 @@ void Automate::transition(char entree)
 		{
 			if (nouveauPrefix == etats_[i]->getPrefix())
 			{
-				prefixEntree_ = nouveauPrefix;
+				prefixEntree_ = nouveauPrefix; //INUTILE?
 				etatPresent_ = etats_[i];
-				proposer();
-				return;
+				string propositions = proposer();
+				return propositions;
 			}
 		}
 		etatPresent_ = start_;
@@ -108,25 +109,63 @@ void Automate::transition(char entree)
 	}
 	else
 	{
-		etatPresent_ = start_;
-		prefixEntree_ = "";
-		cout << "Cette entree ne fait pas partie de l'alphabet du lexique selectionne. Veuillez entrer une lettre valide" << endl << endl;
+		if (entree == ESPACE || entree == RETOUR_DE_LIGNE)
+		{
+			actualiserLabels();
+			etatPresent_ = start_;
+			prefixEntree_ = ""; //INUTILE?
+			string propositions = proposer();
+			return propositions;
+
+		}
+		else 
+		{
+			etatPresent_ = start_;
+			prefixEntree_ = "";
+			cout << "Cette entree ne fait pas partie de l'alphabet du lexique selectionne. Veuillez entrer une lettre valide" << endl << endl;
+		}
 	}
 }
 
-void Automate::proposer()
+string Automate::proposer()
 {
+	string propositions = "";
 	if (etatPresent_->getMotsPossibles().empty())
 	{
-		cout << "Malheureusement, il n'existe aucun mot correspondant a votre entree dans le lexique selectionne" << endl;
+		string message = "Malheureusement, il n'existe aucun mot correspondant a votre entree dans le lexique selectionne\n";
+		cout << message;
+		propositions += message;
+		return propositions;
 	}
 	else
 	{
-		cout << "Vouliez-vous ecrire : " << endl;
+		string message = "Vouliez-vous ecrire :\n";
+		cout << message;
 		for (int i = 0; i < etatPresent_->getMotsPossibles().size(); i++)
 		{
-			cout << (i + 1) << ") " << etatPresent_->getMotsPossibles()[i].getValeurMot() << endl;
+			string uneProposition = "";
+			uneProposition += (i + 1);
+			uneProposition += ") ";
+			uneProposition += etatPresent_->getMotsPossibles()[i].getValeurMot();
+			uneProposition += "\n";
+			//cout << (i + 1) << ") " << etatPresent_->getMotsPossibles()[i].getValeurMot() << endl;
+			cout << uneProposition;
+			propositions += uneProposition;
 		}
+		propositions += "\n";
 		cout << endl;
+		return propositions;
+	}
+}
+
+void Automate::actualiserLabels()
+{
+	for (int i = 0; i < motFinaux_->getVecLexique().size(); i++)
+	{
+		if (etatPresent_->getPrefix() == motFinaux_->getVecLexique()[i].getValeurMot())
+		{
+			motFinaux_->incrementerNbUtilisation(&motFinaux_->getVecLexique()[i]);
+			motFinaux_->actualiserMotRecent(&motFinaux_->getVecLexique()[i]);
+		}
 	}
 }

@@ -4,6 +4,8 @@
 #include "lexique.h"
 #include "oneChar.h"
 #include "Automate.h"
+#include "oneChar.h"
+#include "VariablesGlobales.h"
 #include <conio.h>
 using namespace std;
 
@@ -32,33 +34,37 @@ int main() {
 		else if (output == 'b' || output == 'B')
 		{
 			cout << "Entrez un mot \n";
-			string mot;
-			oneChar ch;
-			//mot += ch.readOneChar();
+			//string mot;
 			//cin >> mot;
-			////char input[50] = "";
-			//char cur_input;
-			//printf("Input: ");
-			///*for (int i = 0; i < 50; i++)
-			//{*/
-			//while(true){
-			//	cur_input = getchar();
-			//	if (cur_input != ' ')
-			//	{
-			//		mot += cur_input;
-			//		//break;
-			//	}
-			//	else
-			//		break;
-			//}
 			automate = new Automate(&lex);
-
-			for (int i = 0; i < 10; i++)
+			oneChar lecture;
+			bool wait = false;
+			bool toucheRetourLigneEntree = false;
+			char caractereLu;
+			string caractereTape = "";
+			string anciennesPropositions = "";
+			while (toucheRetourLigneEntree == false)
 			{
-				automate->transition(ch.readOneChar());
-				cout << endl;
-			}
+				if (wait == false)
+				{
+					cout << anciennesPropositions << "Champs de recherche : " << caractereTape;
+					caractereLu = lecture.readOneChar();
+					caractereTape += caractereLu;
+					anciennesPropositions = automate->transition(caractereLu);
+					if (caractereLu == RETOUR_DE_LIGNE)
+					{
+						toucheRetourLigneEntree = true;
+						system("cls");
+					}
+					wait = !wait;
 
+				}
+				else
+				{
+					lecture.readOneChar();
+					wait = !wait;
+				}
+			} 
 		}
 		else if (output == 'c' || output == 'C')
 		{

@@ -15,12 +15,14 @@ public:
 	void actualiserAlphabet(char lettre);
 	bool presentDansAlphabet(char lettre);
 
-	void transition(char entree);
-	void proposer();
+	string transition(char entree);
+	string proposer();
+
+	void actualiserLabels();
 
 private:
 	Lexique* motFinaux_;
-	string prefixEntree_;
+	string prefixEntree_; //INUTILE?
 	Etat* start_;
 	Etat* etatPresent_;
 	//Etat* prochainEtats_;
