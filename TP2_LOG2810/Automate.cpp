@@ -92,17 +92,7 @@ void Automate::transition(char entree)
 				return;
 			}
 		}
-		nouveauPrefix = entree;
-		for (int i = 0; i < etats_.size(); i++)
-		{
-			if (nouveauPrefix == etats_[i]->getPrefix())
-			{
-				prefixEntree_ = nouveauPrefix;
-				etatPresent_ = etats_[i];
-				proposer();
-				return;
-			}
-		}
+		cout << "Malheureusement, il n'existe aucun mot correspondant a votre entree dans le lexique selectionne. Veuillez entrer une lettre valide" << endl << endl;
 		etatPresent_ = start_;
 		prefixEntree_ = "";
 	}
@@ -121,10 +111,6 @@ void Automate::proposer()
 		if (etatPresent_->getEtatFinal())
 		{
 			cout << "Il n'existe aucune proposition possible" << endl;
-		}
-		else
-		{
-			cout << "Malheureusement, il n'existe aucun mot correspondant a votre entree dans le lexique selectionne" << endl;
 		}
 	}
 	else
