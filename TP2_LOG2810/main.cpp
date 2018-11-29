@@ -24,6 +24,7 @@ int main() {
 			cout << "Entrer le fichier de lexique a charger \n";
 			string nomfichier;
 			cin >> nomfichier;
+			lex.clear();
 			lex.lectureFichier(nomfichier);
 
 		}

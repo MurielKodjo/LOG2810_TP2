@@ -17,6 +17,11 @@ Lexique::~Lexique()
 {
 }
 
+void Lexique::clear()
+{
+	vecLexique_.clear();
+}
+
 void Lexique::lectureFichier(string nomFichier)
 {
 	ifstream fichier(nomFichier) ;

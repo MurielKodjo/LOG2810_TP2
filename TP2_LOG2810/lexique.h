@@ -12,6 +12,7 @@ public:
 	Lexique();
 	Lexique(string nomFichier);
 	~Lexique();
+	void clear();
 	void lectureFichier(string nomFichier);
 	void setVecLexique(vector<string> vectMot);
 	int getNombreUtilisation(string mot);
