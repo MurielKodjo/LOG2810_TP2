@@ -1,6 +1,7 @@
 #pragma once
 #include "lexique.h"
 #include "Etat.h"
+#include "cinqPremier.h"
 #include <vector>
 
 class Automate
@@ -17,6 +18,7 @@ public:
 
 	void transition(char entree);
 	void proposer();
+	Lexique* getLexique();
 
 private:
 	Lexique* motFinaux_;

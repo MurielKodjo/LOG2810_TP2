@@ -33,6 +33,11 @@ void Mot::setNbUtilisation(int nombre)
 	nbUtilisation_ = nombre;
 }
 
+void Mot::augmenterNbUtilisation()
+{
+	nbUtilisation_ += 1;
+}
+
 void Mot::setValeurMot(string mot)
 {
 	valeur_ = mot;

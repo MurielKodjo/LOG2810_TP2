@@ -130,3 +130,9 @@ void Automate::proposer()
 		cout << endl;
 	}
 }
+
+Lexique* Automate::getLexique()
+{
+	return motFinaux_;
+}
+

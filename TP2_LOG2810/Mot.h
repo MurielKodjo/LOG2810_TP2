@@ -13,6 +13,7 @@ public:
 	string getValeurMot();
 	void setUtilisationRecente(bool recent);
 	void setNbUtilisation(int nombre);
+	void augmenterNbUtilisation();
 	void setValeurMot(string mot);
 private:
 	string valeur_;

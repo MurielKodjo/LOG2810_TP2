@@ -3,6 +3,7 @@
 #include <vector>
 #include <string>
 #include "Mot.h"
+#include "cinqPremier.h"
 using namespace std;
 
 class Lexique
@@ -13,16 +14,13 @@ public:
 	~Lexique();
 	void lectureFichier(string nomFichier);
 	void setVecLexique(vector<string> vectMot);
-	int getPremierLabel(string mot);
-	int getSecondLabel(string mot);
-
-	//AJOUTÉ PAR HORBY-------------------------------------
+	int getNombreUtilisation(string mot);
+	void setMotRecent(string mot);
+	cinqPremier getMotRecent();
 	vector<Mot> getVecLexique();
-	void setVecLexique(vector<Mot> vectMot); // AJOUTÉ POUR TEST
-	//-----------------------------------------------------
 
 private:
 	vector<Mot> vecLexique_ ;
-	Mot vecMotRecent_[5];
+	cinqPremier motRecent_;
 };
 

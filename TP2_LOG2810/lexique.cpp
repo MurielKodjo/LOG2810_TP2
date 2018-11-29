@@ -40,7 +40,7 @@ void Lexique::setVecLexique(vector<string> vectMot)
 {
 }
 
-int Lexique::getPremierLabel(string mot)
+int Lexique::getNombreUtilisation(string mot)
 {
 	for (int i = 0; i < vecLexique_.size(); i++)
 	{
@@ -52,26 +52,25 @@ int Lexique::getPremierLabel(string mot)
 	return 0 ; //retourne exception "Mot pas dans lexique"
 }
 
-int Lexique::getSecondLabel(string mot)
-{
-	for (int i = 0; i < vecLexique_.size(); i++)
-	{
-		if (vecLexique_[i].getValeurMot() == mot)
-		{
-			return int(vecLexique_[i].getUtilisation());
-		}
-	}
-	return 0; //retourne exception "Mot pas dans lexique"
-}
-
 vector<Mot> Lexique::getVecLexique()
 {
 	return vecLexique_;
 }
 
-//AJOUTÉ PAR HORBY POUR TEST----------------------------------------------------
-void Lexique::setVecLexique(vector<Mot> vectMot)
+void Lexique::setMotRecent(string mot)
 {
-	vecLexique_ = vectMot;
+	motRecent_.addElement(mot);
+	for (int i = 0; i < vecLexique_.size(); i++)
+	{
+		if (vecLexique_[i].getValeurMot() == mot)
+		{
+			vecLexique_[i].augmenterNbUtilisation();
+			break;
+		}
+	}
 }
-//------------------------------------------------------------------------------
+
+cinqPremier Lexique::getMotRecent()
+{
+	return motRecent_;
+}

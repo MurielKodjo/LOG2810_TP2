@@ -8,11 +8,9 @@
 using namespace std;
 
 int main() {
-	//TODO : interface graphique permettant de saisir texte
-	//TODO : Afficher le label
 	bool exit = true;
 	Lexique lex;
-	Automate* automate;
+	Automate* automate =new Automate(&lex);
 	oneChar reader;
 	do
 	{
@@ -26,43 +24,13 @@ int main() {
 			cout << "Entrer le fichier de lexique a charger \n";
 			string nomfichier;
 			cin >> nomfichier;
-			//Lexique lex;
 			lex.lectureFichier(nomfichier);
 
 		}
 		else if (output == 'b' || output == 'B')
 		{
-			//cout << "Entrez un mot \n";
-			//string mot;
-			//cin >> mot;
-
-			//Lexique* lexPtr = new Lexique();
-			//*lexPtr = lex;
-
-			//AJOUTÉ PAR HORBY POUR TEST--------------------------------------------------------------------------------------------
-			//vector<Mot> motsLus(12);
-			//motsLus[0].setValeurMot("caisse");
-			//motsLus[1].setValeurMot("caisses");
-			//motsLus[2].setValeurMot("caissier");
-			//motsLus[3].setValeurMot("caissiers");
-			//motsLus[4].setValeurMot("caissière");
-			//motsLus[5].setValeurMot("caissières");
-			//motsLus[6].setValeurMot("cas");
-			//motsLus[7].setValeurMot("case");
-			//motsLus[8].setValeurMot("cases");
-			//motsLus[9].setValeurMot("caser");
-			//motsLus[10].setValeurMot("casier");
-			//motsLus[11].setValeurMot("casiers");
-
-			//lex.setVecLexique(motsLus);
-			//-----------------------------------------------------------------------------------------------------------------------
-
-			//automate = new Automate(lexPtr);
+			cout << "Entrez un mot \n";
 			automate = new Automate(&lex);
-			//for (int i = 0; i < mot.size(); i++)
-			//{
-				//automate->transition(mot[i]);
-			//}
 			string mot;
 			char charLu = reader.readOneChar();
 			while (charLu != '\r') { //temps que enter pas presser si on veut pour space mettre ' '
@@ -71,18 +39,18 @@ int main() {
 				automate->transition(charLu);
 				charLu = reader.readOneChar();
 			}
-			
+			automate->getLexique()->setMotRecent(mot);
 		}
 		else if (output == 'c' || output == 'C')
 		{
 			cout << "Entrez le mot dont vous voulez connaitre le label \n";
 			string motLabel;
 			cin >> motLabel;
-			cout << motLabel << " a \202t\202 utilise " << lex.getPremierLabel(motLabel) << " fois \n";
-			if (lex.getSecondLabel(motLabel) == 1)
-				cout << "Le mot fait parti des cinq mot recemment utilise \n\n";
-			else
-				cout << "Le mot ne fait pas parti des cinq mot recemment utilis\202 \n\n";
+			//Vérifier que le mot est dans le lexique MK
+			automate->getLexique()->getMotRecent().trouverMot(motLabel);
+			cout << motLabel << " a \202t\202 utilise " 
+				 << automate->getLexique()->getNombreUtilisation(motLabel) << " fois \n";
+			
 		}
 		else if (output == 'd' || output == 'D')
 		{

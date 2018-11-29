@@ -3,6 +3,7 @@
 #include<vector>
 #include<string>
 #include<iostream>
+#include "Mot.h"
 
 using namespace std;
 
@@ -10,15 +11,16 @@ class cinqPremier
 {
 
 private:
-	
-	string tab[5];
+	Mot tab[5];
 	void replaceOnTop(int position);
 	void pushTop(string elem);
 
 public:
 	cinqPremier();
 	~cinqPremier();
-	string get(int position);
+	Mot get(int position);
 	void addElement(string elem);
+	bool trouverMot(string mot);
+	Mot getMot(string mot);
 };
 
