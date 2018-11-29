@@ -35,7 +35,15 @@ int main() {
 			string mot;
 			char charLu = reader.readOneChar();
 			while (charLu != '\r') { //temps que enter pas presser si on veut pour space mettre ' '
-				mot += charLu;
+				if (charLu == ' ')
+				{
+					automate->getLexique()->setMotRecent(mot);
+					mot = "";
+				}
+				else 
+				{
+					mot += charLu;
+				}
 				cout << mot << endl;
 				automate->transition(charLu);
 				charLu = reader.readOneChar();
