@@ -16,7 +16,7 @@ int main() {
 	{
 		string outputString;
 		cout << "Choisir une des options suivantes : \n" <<
-			"a) Mettre a jour \nb) Saisir du texte \nc) Afficher les labels \nd) Quitter \n";
+			"a) Mettre a jour \nb) Saisir du texte \nc) Afficher les labels d'un mot \nd) Afficher les cinqs mots recemments utilis\202s \ne) Quitter \n";
 		cin >> outputString;
 		char output = outputString[0];
 		if (output == 'a' || output == 'A')
@@ -55,13 +55,20 @@ int main() {
 			cout << "Entrez le mot dont vous voulez connaitre le label \n";
 			string motLabel;
 			cin >> motLabel;
-			//Vérifier que le mot est dans le lexique MK
 			automate->getLexique()->getMotRecent().trouverMot(motLabel);
-			cout << motLabel << " a \202t\202 utilise " 
+			cout << motLabel << " a \202t\202 utilis\202 " 
 				 << automate->getLexique()->getNombreUtilisation(motLabel) << " fois \n";
 			
 		}
 		else if (output == 'd' || output == 'D')
+		{
+			cout << "Les cinq mots les plus utilis\202s a partir du plus recent sont les suivants : " << endl;
+			for (int i = 0; i < 5; i++)
+			{
+				cout << automate->getLexique()->getMotRecent().get(i).getValeurMot() << endl;
+			}
+		}
+		else if (output == 'e' || output == 'E')
 		{
 			exit = false;
 		}

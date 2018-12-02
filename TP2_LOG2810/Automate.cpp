@@ -92,7 +92,7 @@ void Automate::transition(char entree)
 				return;
 			}
 		}
-		cout << "Malheureusement, il n'existe aucun mot correspondant a votre entree dans le lexique selectionne. Veuillez entrer une lettre valide" << endl << endl;
+		cout << "Malheureusement, il n'existe aucun mot correspondant a votre entr\202e dans le lexique selectionne. Veuillez entrer une lettre valide" << endl << endl;
 		etatPresent_ = start_;
 		prefixEntree_ = "";
 	}

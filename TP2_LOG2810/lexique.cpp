@@ -54,7 +54,8 @@ int Lexique::getNombreUtilisation(string mot)
 			return vecLexique_[i].getNbUtilisation();
 		}
 	}
-	return 0 ; //retourne exception "Mot pas dans lexique"
+	cout << "Le mot entr\202 n'est pas dans le lexique !" << endl;
+	return 0 ; 
 }
 
 vector<Mot> Lexique::getVecLexique()

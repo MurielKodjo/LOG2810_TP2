@@ -64,13 +64,12 @@ bool cinqPremier::trouverMot(string mot)
 	{
 		if (mot == tab[i].getValeurMot())
 		{
-			cout << "Le mot fait parti des cinq mot recemment utilise \n";
+			cout << "Le mot fait parti des cinq mots recemment utilis\202s \n";
 			return true;
 		}
 	}
-	cout << "Le mot ne fait pas parti des cinq mot recemment utilis\202 \n";
+	cout << "Le mot ne fait pas parti des cinq mots recemment utilis\202s \n";
 	return false;
-	
 }
 
 Mot cinqPremier::getMot(string mot)
@@ -82,5 +81,6 @@ Mot cinqPremier::getMot(string mot)
 			return tab[i];
 		}
 	}
+	cout << "Ce mot ne fait pas partie du lexique.";
 	return Mot(); //throw exception 
 }
