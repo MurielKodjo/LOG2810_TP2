@@ -63,9 +63,15 @@ int main() {
 		else if (output == 'd' || output == 'D')
 		{
 			cout << "Les cinq mots les plus utilis\202s a partir du plus recent sont les suivants : " << endl;
-			for (int i = 0; i < 5; i++)
+			cinqPremier temp;
+			int premierePostion = 0;
+			if (automate->getLexique()->getMotRecent().get(premierePostion).getValeurMot() == temp.get(premierePostion).getValeurMot())
 			{
-				cout << automate->getLexique()->getMotRecent().get(i).getValeurMot() << endl;
+				cout << "Aucun mot n'a \202t\202 entr\202 r\202cemment" << endl;
+			}
+			for (int i = 0; i < automate->getLexique()->getMotRecent().getSize(); i++)
+			{
+				cout << i + 1 << " " << automate->getLexique()->getMotRecent().get(i).getValeurMot() << endl;
 			}
 		}
 		else if (output == 'e' || output == 'E')

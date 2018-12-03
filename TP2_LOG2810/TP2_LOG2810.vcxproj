@@ -35,6 +35,9 @@
     <ClCompile Include="Mot.cpp" />
     <ClCompile Include="oneChar.cpp" />
   </ItemGroup>
+  <ItemGroup>
+    <None Include="ClassDiagram.cd" />
+  </ItemGroup>
   <PropertyGroup Label="Globals">
     <VCProjectVersion>15.0</VCProjectVersion>
     <ProjectGuid>{8B4E8573-B34F-4B7F-8FA9-0CECFBA00D13}</ProjectGuid>

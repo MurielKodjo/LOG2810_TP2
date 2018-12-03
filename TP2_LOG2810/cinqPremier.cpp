@@ -84,3 +84,22 @@ Mot cinqPremier::getMot(string mot)
 	cout << "Ce mot ne fait pas partie du lexique.";
 	return Mot(); //throw exception 
 }
+
+void cinqPremier::clear()
+{
+	for (int i = 0; i < 5; i++)
+	{
+		tab[i] = Mot();
+	}
+}
+
+int cinqPremier::getSize()
+{
+	int nombreDeMots = 0;
+	for (int i = 0; i < 5; i++)
+	{
+		if (tab[i].getValeurMot() != Mot().getValeurMot())
+			nombreDeMots++;
+	}
+	return nombreDeMots;
+}

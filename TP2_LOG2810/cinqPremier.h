@@ -22,5 +22,7 @@ public:
 	void addElement(string elem);
 	bool trouverMot(string mot);
 	Mot getMot(string mot);
+	void clear();
+	int getSize();
 };
 

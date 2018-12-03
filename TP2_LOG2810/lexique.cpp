@@ -20,6 +20,7 @@ Lexique::~Lexique()
 void Lexique::clear()
 {
 	vecLexique_.clear();
+	motRecent_.clear();
 }
 
 void Lexique::lectureFichier(string nomFichier)
