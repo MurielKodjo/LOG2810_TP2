@@ -25,6 +25,7 @@
     <ClInclude Include="lexique.h" />
     <ClInclude Include="Mot.h" />
     <ClInclude Include="oneChar.h" />
+    <ClInclude Include="variablesGlobales.h" />
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="Automate.cpp" />
@@ -42,7 +43,7 @@
     <VCProjectVersion>15.0</VCProjectVersion>
     <ProjectGuid>{8B4E8573-B34F-4B7F-8FA9-0CECFBA00D13}</ProjectGuid>
     <RootNamespace>TP2LOG2810</RootNamespace>
-    <WindowsTargetPlatformVersion>10.0.16299.0</WindowsTargetPlatformVersion>
+    <WindowsTargetPlatformVersion>10.0.17763.0</WindowsTargetPlatformVersion>
   </PropertyGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.Default.props" />
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'" Label="Configuration">

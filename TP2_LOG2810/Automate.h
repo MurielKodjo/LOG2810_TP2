@@ -20,6 +20,8 @@ public:
 	void proposer();
 	Lexique* getLexique();
 
+	string getPrefixEntree();
+
 private:
 	Lexique* motFinaux_;
 	string prefixEntree_;

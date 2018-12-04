@@ -4,6 +4,7 @@
 #include "lexique.h"
 #include "Automate.h"
 #include "oneChar.h"
+#include "variablesGlobales.h"
 #include <conio.h>
 using namespace std;
 
@@ -34,18 +35,20 @@ int main() {
 			automate = new Automate(&lex);
 			string mot;
 			char charLu = reader.readOneChar();
-			while (charLu != '\r') { //temps que enter pas presser si on veut pour space mettre ' '
-				if (charLu == ' ')
+			while (charLu != TOUCHE_ENTREE) { //temps que enter pas presser si on veut pour space mettre ' '
+				if (charLu == TOUCHE_SPACE)
 				{
 					automate->getLexique()->setMotRecent(mot);
-					mot = "";
+					mot.resize(0);
 				}
-				else 
+				else
 				{
 					mot += charLu;
 				}
-				cout << mot << endl;
+				//cout << mot << endl;
+				cout << "Champs de recherche: " << (automate->getPrefixEntree() + charLu) << endl;
 				automate->transition(charLu);
+				//cout << "Champs de recherche: " << automate->getPrefixEntree() << endl;
 				charLu = reader.readOneChar();
 			}
 			automate->getLexique()->setMotRecent(mot);

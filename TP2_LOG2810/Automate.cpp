@@ -1,4 +1,5 @@
 #include "Automate.h"
+#include "variablesGlobales.h"
 #include <iostream>
 
 Automate::Automate(Lexique* langageReconnu)
@@ -79,14 +80,14 @@ bool Automate::presentDansAlphabet(char lettre)
 
 void Automate::transition(char entree)
 {
+	string nouveauPrefix = etatPresent_->getPrefix() + entree;
+	prefixEntree_ += entree;
 	if (presentDansAlphabet(entree))
 	{
-		string nouveauPrefix = etatPresent_->getPrefix() + entree;
 		for (int i = 0; i < etats_.size(); i++)
 		{
 			if (nouveauPrefix == etats_[i]->getPrefix())
 			{
-				prefixEntree_ = nouveauPrefix;
 				etatPresent_ = etats_[i];
 				proposer();
 				return;
@@ -94,13 +95,14 @@ void Automate::transition(char entree)
 		}
 		cout << "Malheureusement, il n'existe aucun mot correspondant a votre entr\202e dans le lexique selectionne. Veuillez entrer une lettre valide" << endl << endl;
 		etatPresent_ = start_;
-		prefixEntree_ = "";
 	}
 	else
 	{
 		etatPresent_ = start_;
-		prefixEntree_ = "";
-		cout << "Cette entree ne fait pas partie de l'alphabet du lexique selectionne. Veuillez entrer une lettre valide" << endl << endl;
+		if (entree != TOUCHE_SPACE)
+		{
+			cout << "Cette entree ne fait pas partie de l'alphabet du lexique selectionne. Veuillez entrer une lettre valide" << endl << endl;
+		}
 	}
 }
 
@@ -129,3 +131,7 @@ Lexique* Automate::getLexique()
 	return motFinaux_;
 }
 
+string Automate::getPrefixEntree()
+{
+	return prefixEntree_;
+}
