@@ -27,7 +27,6 @@ int main() {
 			cin >> nomfichier;
 			lex.clear();
 			lex.lectureFichier(nomfichier);
-
 		}
 		else if (output == 'b' || output == 'B')
 		{
@@ -45,10 +44,8 @@ int main() {
 				{
 					mot += charLu;
 				}
-				//cout << mot << endl;
 				cout << "Champs de recherche: " << (automate->getPrefixEntree() + charLu) << endl;
 				automate->transition(charLu);
-				//cout << "Champs de recherche: " << automate->getPrefixEntree() << endl;
 				charLu = reader.readOneChar();
 			}
 			automate->getLexique()->setMotRecent(mot);

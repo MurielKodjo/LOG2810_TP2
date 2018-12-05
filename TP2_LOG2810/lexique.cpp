@@ -66,12 +66,12 @@ vector<Mot> Lexique::getVecLexique()
 
 void Lexique::setMotRecent(string mot)
 {
-	motRecent_.addElement(mot);
-	for (int i = 0; i < vecLexique_.size(); i++)
+		for (int i = 0; i < vecLexique_.size(); i++)
 	{
 		if (vecLexique_[i].getValeurMot() == mot)
 		{
 			vecLexique_[i].augmenterNbUtilisation();
+			motRecent_.addElement(mot);
 			break;
 		}
 	}
