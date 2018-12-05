@@ -9,6 +9,7 @@ Automate::Automate(Lexique* langageReconnu)
 	start_ = new Etat("");
 	construireFSM();
 	etatPresent_ = start_;
+	erreur_ = false;
 }
 
 void Automate::construireFSM()
@@ -86,6 +87,11 @@ void Automate::transition(char entree)
 	{
 		for (int i = 0; i < etats_.size(); i++)
 		{
+			if (erreur_ == true)
+			{
+				cout << "Malheureusement, il n'existe aucun mot correspondant a votre entr\202e dans le lexique selectionne. Veuillez entrer une lettre valide" << endl << endl;
+				return;
+			}
 			if (nouveauPrefix == etats_[i]->getPrefix())
 			{
 				etatPresent_ = etats_[i];
@@ -95,6 +101,7 @@ void Automate::transition(char entree)
 		}
 		cout << "Malheureusement, il n'existe aucun mot correspondant a votre entr\202e dans le lexique selectionne. Veuillez entrer une lettre valide" << endl << endl;
 		etatPresent_ = start_;
+		erreur_ = true;
 	}
 	else
 	{
@@ -102,6 +109,10 @@ void Automate::transition(char entree)
 		if (entree != TOUCHE_SPACE)
 		{
 			cout << "Cette entree ne fait pas partie de l'alphabet du lexique selectionne. Veuillez entrer une lettre valide" << endl << endl;
+		}
+		else
+		{
+			erreur_ = false;
 		}
 	}
 }

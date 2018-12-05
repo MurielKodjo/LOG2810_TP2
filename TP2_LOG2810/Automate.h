@@ -32,5 +32,7 @@ private:
 	vector<Etat*> etatsFinaux_;
 	vector<char> alphabet_;
 
+	bool erreur_;
+
 };
 
